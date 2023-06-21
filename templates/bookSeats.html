@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reservo!</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <div class="info">
+    <h1>Welcome to reservo!</h1>
+    <p>
+        Enter the number of seats you want to book.
+    </p>
+    <form action="/book_seats" method="post">
+        <div class="infoBox2">
+            <div class="input-group">
+                <input type="number" min="0" max="7" name="seats_required" required class="input">
+                <label class="user-label">seats</label>
+              </div>
+              <button value="submit">
+                Book
+            </button>
+        </div>
+    </form>
+    <p><div class="error">
+        {{ data["error"] }}
+    </div>
+    </p>
+    <table>
+        <tr>
+            <td>
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/ff0000/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+            </td>
+            <td>
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/adff2f/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+            </td>
+            <td>
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/0047ab/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Seat Unavailable
+            </td>
+            <td>
+                Seat Booked by you
+            </td>
+            <td>
+                Seat available
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <p><table>
+        {% for row in data["seats"] %}
+          <tr>
+            {% for value in row %}
+              <td>
+                {% if value == 1 %}
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/ff0000/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+                {% elif value == 2 %}
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/adff2f/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+                {% elif value == 0 %}
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/0047ab/bus-seat-top-view.png" alt="bus-seat-top-view"/>
+                {% elif value == -1 %}
+                  
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+      <br>
+      <p style="font-size: 0.7em">
+      Your Email: {{ data["email"] }}
+      </p>
+    </p>
+</div>
+</body>
+</html>

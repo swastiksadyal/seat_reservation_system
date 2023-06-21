@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>reservo!</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <div class="info">
+    <h1>Welcome to reservo!</h1>
+    <p>Reserve seats for special Bus</p>
+
+    <h2></h2>
+    <form action="/add_user" method="post">
+        <div class="infoBox">
+        <div class="input-group">
+            <input required="" type="text" name="name" autocomplete="off" class="input">
+            <label class="user-label">First Name</label>
+          </div>
+          <br>
+          <div class="input-group">
+            <input required="" type="text" name="email" autocomplete="off" class="input">
+            <label class="user-label">E-Mail</label>
+          </div><center>
+          <button value="submit">
+            Submit
+        </button>
+    </center>
+    </div>
+    </form>
+</div>
+
+    
+</body>
+</html>
